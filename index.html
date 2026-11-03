@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soniya's Transformation Journey</title>
+<link rel="stylesheet" href="https://cloudflare.com">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { background: linear-gradient(135deg, #080808 0%, #120505 100%); color: #f0f0f0; line-height: 1.6; }
+a { color: #ff5252; text-decoration: none; }
+header { background: rgba(20, 20, 20, 0.75); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid rgba(230, 57, 70, 0.2); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; position: sticky; top: 0; z-index: 100; }
+.logo { font-size: 22px; font-weight: bold; color: #e63946; letter-spacing: 2px; text-shadow: 0 0 10px rgba(230, 57, 70, 0.3); }
+nav { display: flex; gap: 25px; align-items: center; }
+nav a { font-weight: 500; color: #cccccc; transition: color 0.3s; font-size: 15px; }
+nav a:hover { color: #e63946; }
+.search-container { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 5px 15px; }
+.search-container input { background: none; border: none; color: white; outline: none; padding: 3px; width: 120px; font-size: 13px; }
+.search-btn { background: none; border: none; color: #e63946; cursor: pointer; font-size: 14px; }
+.container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+section { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; margin-bottom: 40px; scroll-margin-top: 100px; }
+h2 { font-size: 26px; color: #e63946; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
+h2::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(230, 57, 70, 0.4), transparent); }
+.about-text p { margin-bottom: 15px; color: #dddddd; font-size: 16px; }
+.vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
+.vision-category { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 20px; border-radius: 12px; }
+.vision-category h3 { color: #ff6b6b; font-size: 18px; margin-bottom: 12px; font-weight: 500; border-bottom: 1px dashed rgba(255, 255, 255, 0.1); padding-bottom: 6px; }
+.vision-category ul { list-style: none; }
+.vision-category ul li { margin-bottom: 8px; color: #cccccc; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+.vision-category ul li::before { content: '➔'; color: #e63946; font-size: 12px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+.gallery-card { background: rgba(20, 20, 20, 0.6); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); transition: transform 0.3s, border-color 0.3s; }
+.gallery-card:hover { transform: translateY(-4px); border-color: rgba(230, 57, 70, 0.4); }
+.gallery-img { width: 100%; height: 320px; object-fit: cover; display: block; filter: brightness(0.9); }
+.interaction-panel { padding: 15px; }
+.action-buttons { display: flex; justify-content: space-between; margin-bottom: 15px; }
+.action-btn { background: none; border: none; color: #aaaaaa; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.action-btn:hover { color: #e63946; }
+.share-options { display: flex; gap: 15px; background: rgba(255, 255, 255, 0.03); padding: 8px; border-radius: 8px; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.05); }
+.share-icon { font-size: 18px; transition: transform 0.2s; }
+.share-icon:hover { transform: scale(1.15); }
+.fa-snapchat { color: #FFFC00; }
+.fa-instagram { color: #E1306C; }
+.fa-facebook { color: #1877F2; }
+.fa-x-twitter { color: #ffffff; }
+.contact-layout { display: flex; gap: 30px; flex-wrap: wrap; }
+.form-side { flex: 1.3; min-width: 300px; }
+.info-side { flex: 0.7; min-width: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.02); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
+.snap-title { font-size: 14px; text-transform: uppercase; color: #FFFC00; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
+.barcode-placeholder { width: 160px; height: 160px; background: rgba(255, 255, 255, 0.05); border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #888888; font-size: 12px; padding: 10px; overflow: hidden; }
+.barcode-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+.translucent-form { background: rgba(255, 255, 255, 0.02); padding: 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06); position: relative; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+.form-group { margin-bottom: 15px; }
+.form-group.full-width { grid-column: span 2; }
+.form-group label { display: block; margin-bottom: 6px; font-size: 13px; font-weight: 500; color: #b0b0b0; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px 12px; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); color: #ffffff; border-radius: 8px; outline: none; font-size: 14px; transition: border-color 0.3s, background 0.3s; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: rgba(230, 57, 70, 0.6); background: rgba(0, 0, 0, 0.6); }
+.amount-input-container { display: flex; align-items: center; position: relative; }
+.currency-addon { position: absolute; left: 12px; color: #ff6b6b; font-weight: 600; font-size: 14px; }
+.amount-input-container input { padding-left: 30px; }
+.submit-btn { width: 100%; background: #e63946; color: #ffffff; border: none; padding: 12px; font-size: 15px; font-weight: 600; border-radius: 8px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: background 0.3s, transform 0.1s; }
+.submit-btn:hover { background: #d0303c; }
+.submit-btn:active { transform: scale(0.99); }
+.thankyou-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); z-index: 1000; align-items: center; justify-content: center; }
+.thankyou-box { background: rgba(30, 30, 30, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(230, 57, 70, 0.3); width: 280px; height: 280px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: popupScale 0.3s ease-out forwards; }
+.thankyou-box i { font-size: 45px; color: #e63946; margin-bottom: 15px; }
+.thankyou-box h4 { font-size: 20px; margin-bottom: 10px; color: #ffffff; }
+.thankyou-box p { font-size: 14px; color: #cccccc; margin-bottom: 15px; }
+.close-popup-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; }
+@keyframes popupScale { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@media (max-width: 768px) { header { flex-direction: column; gap: 12px; text-align: center; padding: 15px 20px; } nav { flex-wrap: wrap; justify-content: center; gap: 15px; } .form-row { grid-template-columns: 1fr; gap: 0; } .form-group.full-width { grid-column: auto; } .contact-layout { flex-direction: column; } }
+</style>
+</head>
+<body>
+<header>
+<div class="logo">SONIYA</div>
+<nav>
+<a href="#about">About</a>
+<a href="#vision">Vision</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+<div class="search-container">
+<input type="text" placeholder="Search parameters...">
+<button class="search-btn"><i class="fas fa-search"></i></button>
+</div>
+</nav>
+</header>
+<div class="container">
+<section id="about">
+<h2>The Journey of Soniya</h2>
+<div class="about-text">
+<p>Hello, I am Soniya. I am a 30-year-old from India tracking my authentic path as I undergo my transgender transformation journey. This private website exists to share my progress with absolute transparency away from public algorithm noise.</p>
+<p>Alongside my personal evolution, I hold a deep passion for content creation. Post-transformation, my vision is to launch creative visual channels, build a powerful digital presence, and produce premium artistic projects documenting this new chapter of my life.</p>
+</div>
+</section>
+<section id="vision">
+<h2>My Current Vision & Needs</h2>
+
+Snapcode Image Area
+
+Scan or add my snapcode directly from your phone to connect instantly.
+
+
+
+
+
+
+
+Thank You
+I have received your details and interest. I will connect with you shortly.
+Close
+
+
+
+function updateCurrency() {
+const country = document.getElementById('countrySelect').value;
+const symbolElement = document.getElementById('currencySymbol');
+if (country === 'IN') symbolElement.textContent = '₹';
+else if (country === 'US') symbolElement.textContent = '$';
+else if (country === 'UK') symbolElement.textContent = '£';
+else if (country === 'EU') symbolElement.textContent = '€';
+else symbolElement.textContent = '$';
+}
+function handleFormSubmit(event) {
+event.preventDefault();
+document.getElementById('thankyouPopup').style.display = 'flex';
+document.getElementById('sponsorForm').reset();
+updateCurrency();
+}
+function closePopup() {
+document.getElementById('thankyouPopup').style.display = 'none';
+}
