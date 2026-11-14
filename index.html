@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soniya's Transformation Journey</title>
-    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: linear-gradient(135deg, #080808 0%, #120505 100%); color: #f0f0f0; line-height: 1.6; }
@@ -16,7 +15,7 @@
         nav a:hover { color: #e63946; }
         .search-container { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 5px 15px; }
         .search-container input { background: none; border: none; color: white; outline: none; padding: 3px; width: 120px; font-size: 13px; }
-        .search-btn { background: none; border: none; color: #e63946; cursor: pointer; font-size: 14px; }
+        .search-btn { background: none; border: none; color: #e63946; cursor: pointer; font-size: 14px; font-weight: bold; }
         .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
         section { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; margin-bottom: 40px; scroll-margin-top: 100px; }
         h2 { font-size: 26px; color: #e63946; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
@@ -31,18 +30,18 @@
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .gallery-card { background: rgba(20, 20, 20, 0.6); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); transition: transform 0.3s, border-color 0.3s; }
         .gallery-card:hover { transform: translateY(-4px); border-color: rgba(230, 57, 70, 0.4); }
-        .gallery-img { width: 100%; height: 320px; object-fit: cover; display: block; filter: brightness(0.9); }
+        .gallery-placeholder { width: 100%; height: 280px; background: radial-gradient(circle, #241012 0%, #111111 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #888888; font-size: 14px; text-align: center; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .interaction-panel { padding: 15px; }
         .action-buttons { display: flex; justify-content: space-between; margin-bottom: 15px; }
-        .action-btn { background: none; border: none; color: #aaaaaa; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+        .action-btn { background: none; border: none; color: #aaaaaa; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; font-weight: 500; }
         .action-btn:hover { color: #e63946; }
-        .share-options { display: flex; gap: 15px; background: rgba(255, 255, 255, 0.03); padding: 8px; border-radius: 8px; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.05); }
-        .share-icon { font-size: 18px; transition: transform 0.2s; }
-        .share-icon:hover { transform: scale(1.15); }
-        .fa-snapchat { color: #FFFC00; }
-        .fa-instagram { color: #E1306C; }
-        .fa-facebook { color: #1877F2; }
-        .fa-x-twitter { color: #ffffff; }
+        .share-options { display: flex; gap: 12px; background: rgba(255, 255, 255, 0.03); padding: 8px; border-radius: 8px; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.05); flex-wrap: wrap; }
+        .share-link { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); transition: transform 0.2s; }
+        .share-link:hover { transform: scale(1.08); }
+        .snap-color { color: #FFFC00; }
+        .insta-color { color: #E1306C; }
+        .fb-color { color: #4A90E2; }
+        .x-color { color: #ffffff; }
         .comment-section { display: none; margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(255, 255, 255, 0.1); }
         .comment-list { max-height: 100px; overflow-y: auto; margin-bottom: 8px; font-size: 13px; color: #cccccc; }
         .comment-input-box { display: flex; gap: 8px; }
@@ -53,7 +52,6 @@
         .info-side { flex: 0.7; min-width: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.02); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
         .snap-title { font-size: 14px; text-transform: uppercase; color: #FFFC00; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
         .barcode-placeholder { width: 160px; height: 160px; background: rgba(255, 255, 255, 0.05); border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #888888; font-size: 12px; padding: 10px; overflow: hidden; }
-        .barcode-placeholder img { width: 100%; height: 100%; object-fit: contain; }
         .translucent-form { background: rgba(255, 255, 255, 0.02); padding: 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06); position: relative; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
         .form-group { margin-bottom: 15px; }
@@ -69,21 +67,178 @@
         .submit-btn:active { transform: scale(0.99); }
         .thankyou-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); z-index: 1000; align-items: center; justify-content: center; }
         .thankyou-box { background: rgba(30, 30, 30, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(230, 57, 70, 0.3); width: 280px; height: 280px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: popupScale 0.3s ease-out forwards; }
-        .thankyou-box i { font-size: 45px; color: #e63946; margin-bottom: 15px; }
+        .check-circle { font-size: 40px; color: #e63946; margin-bottom: 12px; font-weight: bold; }
         .thankyou-box h4 { font-size: 20px; margin-bottom: 10px; color: #ffffff; }
         .thankyou-box p { font-size: 14px; color: #cccccc; margin-bottom: 15px; }
         .close-popup-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; }
         @keyframes popupScale { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         @media (max-width: 768px) { header { flex-direction: column; gap: 12px; text-align: center; padding: 15px 20px; } nav { flex-wrap: wrap; justify-content: center; gap: 15px; } .form-row { grid-template-columns: 1fr; gap: 0; } .form-group.full-width { grid-column: auto; } .contact-layout { flex-direction: column; } }
     </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SONIYA</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#vision">Vision</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search website..." onkeyup="searchPage()">
+                <button class="search-btn" onclick="searchPage()">Go</button>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <section id="about">
+            <h2>The Journey of Soniya</h2>
+            <div class="about-text">
+                <p>Hello, I am Soniya. I am a 30-year-old from India tracking my authentic path as I undergo my transgender transformation journey. This private website exists to share my progress with absolute transparency away from public algorithm noise.</p>
+                <p>Alongside my personal evolution, I hold a deep passion for content creation. Post-transformation, my vision is to launch creative visual channels, build a powerful digital presence, and produce premium artistic projects documenting this new chapter of my life.</p>
+            </div>
+        </section>
+        <section id="vision">
+            <h2>My Current Vision & Needs</h2>
+            <p style="color: #b0b0b0; font-size: 14px; margin-bottom: 15px;">I am actively seeking sponsorships to assist both my standard physical transition setup and my upcoming media content creation kit. Here is what I am focused on procuring:</p>
+            <div class="vision-grid">
+                <div class="vision-category">
+                    <h3>Production Gear</h3>
+                    <ul>
+                        <li>iPhone (Primary high-res camera unit)</li>
+                        <li>Tablet (For mobile content editing & scripts)</li>
+                        <li>Laptop (For desktop rendering & production workflows)</li>
+                    </ul>
+                </div>
+                <div class="vision-category">
+                    <h3>Wardrobe & Beauty</h3>
+                    <ul>
+                        <li>Dresses & Apparel configurations</li>
+                        <li>Styling accessories & Jewelry pieces</li>
+                        <li>Complete Makeup & cosmetics setup kits</li>
+                    </ul>
+                </div>
+                <div class="vision-category">
+                    <h3>Identity Aesthetics</h3>
+                    <ul>
+                        <li>Silicone props (Premium breast plate setups)</li>
+                        <li>Intimate lifestyle production assets (Vibrators, Dildos)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="gallery">
+            <h2>Progress Log</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card">
+                    <div class="gallery-placeholder">
+                        <strong style="color:#e63946; font-size:16px; margin-bottom:8px;">Timeline Photo Slot 1</strong>
+                        <span>Replace this box with your uploaded photo link in index.html</span>
+                    </div>
+                    <div class="interaction-panel">
+                        <div class="action-buttons">
+                            <button class="action-btn" onclick="toggleLike(this)">&#9825; Like</button>
+                            <button class="action-btn" onclick="toggleComments(this)">&#128172; Comment</button>
+                        </div>
+                        <div class="share-options">
+                            <span class="share-link snap-color">Snapchat</span>
+                            <span class="share-link insta-color">Instagram</span>
+                            <span class="share-link fb-color">Facebook</span>
+                            <span class="share-link x-color">X</span>
+                        </div>
+                        <div class="comment-section">
+                            <div class="comment-list"></div>
+                            <div class="comment-input-box">
+                                <input type="text" placeholder="Add a comment...">
+                                <button onclick="addComment(this)">Post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Genuine Connections</h2>
+            <div class="contact-layout">
+                <div class="form-side">
+                    <div class="translucent-form">
+                        <p style="font-size:14px; margin-bottom: 20px; color:#cccccc;">Write here if you want to sponsor my transformation journey. Serious and authentic inquiries only.</p>
+                        <form id="sponsorForm" onsubmit="handleFormSubmit(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" required placeholder="Sponsor Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Email Address</label>
+                                    <input type="email" required placeholder="contact@domain.com">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Country</label>
+                                    <select id="countrySelect" onchange="updateCurrency()" required>
+                                        <option value="IN">India</option>
+                                        <option value="US">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="EU">Europe Region</option>
+                                        <option value="OTHER">Other Location</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sponsorship Pledge</label>
+                                    <div class="amount-input-container">
+                                        <span class="currency-addon" id="currencySymbol">&#8377;</span>
+                                        <input type="number" required placeholder="Amount">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Target Wishlist Item Selection</label>
+                                <select required>
+                                    <option value="" disabled selected>Select an item to sponsor...</option>
+                                    <option value="iphone">iPhone (Content Production Base)</option>
+                                    <option value="tablet">Tablet / Editing Console</option>
+                                    <option value="laptop">High-End Production Laptop</option>
+                                    <option value="apparel">Premium Dresses & Accessories</option>
+                                    <option value="breastplate">Silicone Props (Breast Plate)</option>
+                                    <option value="toys">Production Intimate Assets (Vibrators/Dildos)</option>
+                                    <option value="makeup">Professional Cosmetics / Makeup Kit</option>
+                                    <option value="general">General Transition Fund Support</option>
+                                </select>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Partnership Message</label>
+                                <textarea rows="4" required placeholder="Please state your intent clearly..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Submit Sponsorship Inquiry</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="info-side">
+                    <div class="snap-title">Snap Connect</div>
+                    <div class="barcode-placeholder" id="snapcodeContainer">
+                        <span style="color:#666; font-size:12px;">Snapcode Image Area</span>
+                    </div>
+                    <p style="font-size: 11px; margin-top: 10px; color: #888888; max-width: 180px;">Scan or add my snapcode directly from your phone to connect instantly.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="thankyou-overlay" id="thankyouPopup">
+        <div class="thankyou-box">
+            <div class="check-circle">&#10003;</div>
+            <h4>Thank You</h4>
+            <p>Thank you for your interest I will connect with you shortly.</p>
+            <button class="close-popup-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
     <script>
         function toggleLike(btn) {
-            const icon = btn.querySelector('i');
-            if (icon.classList.contains('far')) {
-                icon.className = 'fas fa-heart';
+            if (btn.innerHTML.includes('&#9825;') || btn.textContent.includes('♡')) {
+                btn.innerHTML = '&#9829; Liked';
                 btn.style.color = '#e63946';
             } else {
-                icon.className = 'far fa-heart';
+                btn.innerHTML = '&#9825; Like';
                 btn.style.color = '#aaaaaa';
             }
         }
@@ -93,154 +248,43 @@
         }
         function addComment(btn) {
             const input = btn.previousElementSibling;
-Use code with caution.
-if (input.value.trim() !== "") {
-const list = btn.closest('.comment-section').querySelector('.comment-list');
-const newComment = document.createElement('p');
-newComment.innerHTML = 'Viewer: ' + input.value;
-list.appendChild(newComment);
-input.value = "";
-}
-}
-function updateCurrency() {
-const country = document.getElementById('countrySelect').value;
-const symbolElement = document.getElementById('currencySymbol');
-if (country === 'IN') symbolElement.textContent = '₹';
-else if (country === 'US') symbolElement.textContent = '$';
-else if (country === 'UK') symbolElement.textContent = '£';
-else if (country === 'EU') symbolElement.textContent = '€';
-else symbolElement.textContent = '$';
-}
-function handleFormSubmit(event) {
-event.preventDefault();
-document.getElementById('thankyouPopup').style.display = 'flex';
-document.getElementById('sponsorForm').reset();
-updateCurrency();
-}
-function closePopup() {
-document.getElementById('thankyouPopup').style.display = 'none';
-}
-
-
-SONIYA
-
-About
-Vision
-Gallery
-Contact
-
-
-
-
-
-
-The Journey of Soniya
-
-Hello, I am Soniya. I am a 30-year-old from India tracking my authentic path as I undergo my transgender transformation journey. This private website exists to share my progress with absolute transparency away from public algorithm noise.
-Alongside my personal evolution, I hold a deep passion for content creation. Post-transformation, my vision is to launch creative visual channels, build a powerful digital presence, and produce premium artistic projects documenting this new chapter of my life.
-My Current Vision & Needs
-I am actively seeking sponsorships to assist both my standard physical transition setup and my upcoming media content creation kit. Here is what I am focused on procuring:
-
-
- Production Gear
-
-iPhone (Primary high-res camera unit)
-Tablet (For mobile content editing & scripts)
-Laptop (For desktop rendering & production workflows)
-
-
-
- Wardrobe & Beauty
-
-Dresses & Apparel configurations
-Styling accessories & Jewelry pieces
-Complete Makeup & cosmetics setup kits
-
-
-
- Identity Aesthetics
-
-Silicone props (Premium breast plate setups)
-Intimate lifestyle production assets (Vibrators, Dildos)
-
-
-Progress Log
-
-
-
-
-
- Like
- Comment
-
-
-
-
-
-
-
-
-
-
-
-Post
-
-
-
-
-Genuine Connections
-
-
-
-Write here if you want to sponsor my transformation journey. Serious and authentic inquiries only.
-
-
-Full Name
-Email Address
-Country
-India
-United States
-United Kingdom
-Europe Region
-Other Location
-
-
-Sponsorship Pledge
-₹
-
-
-
-
-Target Wishlist Item Selection
-Select an item to sponsor...
-iPhone (Content Production Base)
-Tablet / Editing Console
-High-End Production Laptop
-Premium Dresses & Accessories
-Silicone Props (Breast Plate)
-Production Intimate Assets (Vibrators/Dildos)
-Professional Cosmetics / Makeup Kit
-General Transition Fund Support
-
-
-Partnership Message
-Submit Sponsorship Inquiry
-
-
-
-
- Snap Connect
-
-Snapcode Image Area
-
-Scan or add my snapcode directly from your phone to connect instantly.
-
-
-
-
-
-
-Thank You
-I have received your details and interest. I will connect with you shortly.
-Close
-
+            if (input.value.trim() !== "") {
+                const list = btn.closest('.comment-section').querySelector('.comment-list');
+                const newComment = document.createElement('p');
+                newComment.innerHTML = '<strong>Viewer:</strong> ' + input.value;
+                list.appendChild(newComment);
+                input.value = "";
+            }
+        }
+        function updateCurrency() {
+            const country = document.getElementById('countrySelect').value;
+            const symbolElement = document.getElementById('currencySymbol');
+            if (country === 'IN') symbolElement.innerHTML = '&#8377;';
+            else if (country === 'US') symbolElement.textContent = '$';
+            else if (country === 'UK') symbolElement.innerHTML = '&pound;';
+            else if (country === 'EU') symbolElement.innerHTML = '&euro;';
+            else symbolElement.textContent = '$';
+        }
+        function handleFormSubmit(event) {
+            event.preventDefault(); 
+            document.getElementById('thankyouPopup').style.display = 'flex';
+            document.getElementById('sponsorForm').reset();
+            updateCurrency();
+        }
+        function closePopup() {
+            document.getElementById('thankyouPopup').style.display = 'none';
+        }
+        function searchPage() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => {
+                if (sec.textContent.toLowerCase().includes(term)) {
+                    sec.style.display = 'block';
+                } else {
+                    sec.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
