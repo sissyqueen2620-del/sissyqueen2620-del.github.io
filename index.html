@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soniya's Transformation Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background: linear-gradient(135deg, #080808 0%, #120505 100%); color: #f0f0f0; line-height: 1.6; }
@@ -15,7 +16,7 @@
         nav a:hover { color: #e63946; }
         .search-container { display: flex; align-items: center; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 5px 15px; }
         .search-container input { background: none; border: none; color: white; outline: none; padding: 3px; width: 120px; font-size: 13px; }
-        .search-btn { background: none; border: none; color: #e63946; cursor: pointer; font-size: 14px; font-weight: bold; }
+        .search-btn { background: none; border: none; color: #e63946; cursor: pointer; font-size: 14px; }
         .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
         section { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 30px; margin-bottom: 40px; scroll-margin-top: 100px; }
         h2 { font-size: 26px; color: #e63946; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
@@ -30,18 +31,18 @@
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .gallery-card { background: rgba(20, 20, 20, 0.6); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); transition: transform 0.3s, border-color 0.3s; }
         .gallery-card:hover { transform: translateY(-4px); border-color: rgba(230, 57, 70, 0.4); }
-        .gallery-placeholder { width: 100%; height: 280px; background: radial-gradient(circle, #241012 0%, #111111 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #888888; font-size: 14px; text-align: center; padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .gallery-img { width: 100%; height: 320px; object-fit: cover; display: block; filter: brightness(0.9); }
         .interaction-panel { padding: 15px; }
         .action-buttons { display: flex; justify-content: space-between; margin-bottom: 15px; }
-        .action-btn { background: none; border: none; color: #aaaaaa; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; font-weight: 500; }
+        .action-btn { background: none; border: none; color: #aaaaaa; cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
         .action-btn:hover { color: #e63946; }
-        .share-options { display: flex; gap: 12px; background: rgba(255, 255, 255, 0.03); padding: 8px; border-radius: 8px; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.05); flex-wrap: wrap; }
-        .share-link { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 12px; background: rgba(255, 255, 255, 0.06); transition: transform 0.2s; }
-        .share-link:hover { transform: scale(1.08); }
-        .snap-color { color: #FFFC00; }
-        .insta-color { color: #E1306C; }
-        .fb-color { color: #4A90E2; }
-        .x-color { color: #ffffff; }
+        .share-options { display: flex; gap: 15px; background: rgba(255, 255, 255, 0.03); padding: 8px; border-radius: 8px; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .share-icon { font-size: 18px; transition: transform 0.2s; }
+        .share-icon:hover { transform: scale(1.15); }
+        .fa-snapchat { color: #FFFC00; }
+        .fa-instagram { color: #E1306C; }
+        .fa-facebook { color: #1877F2; }
+        .fa-x-twitter { color: #ffffff; }
         .comment-section { display: none; margin-top: 12px; padding-top: 10px; border-top: 1px dashed rgba(255, 255, 255, 0.1); }
         .comment-list { max-height: 100px; overflow-y: auto; margin-bottom: 8px; font-size: 13px; color: #cccccc; }
         .comment-input-box { display: flex; gap: 8px; }
@@ -50,8 +51,9 @@
         .contact-layout { display: flex; gap: 30px; flex-wrap: wrap; }
         .form-side { flex: 1.3; min-width: 300px; }
         .info-side { flex: 0.7; min-width: 250px; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.02); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
-        .snap-title { font-size: 14px; text-transform: uppercase; color: #FFFC00; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
-        .barcode-placeholder { width: 160px; height: 160px; background: rgba(255, 255, 255, 0.05); border: 2px dashed rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #888888; font-size: 12px; padding: 10px; overflow: hidden; }
+        .snap-title { font-size: 14px; text-transform: uppercase; color: #FFFC00; letter-spacing: 1px; margin-bottom: 12px; font-weight: 600; }
+        .barcode-container { width: 200px; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); border: 2px solid rgba(255, 252, 0, 0.4); background: #FFFC00; }
+        .barcode-container img { width: 100%; height: auto; display: block; }
         .translucent-form { background: rgba(255, 255, 255, 0.02); padding: 25px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06); position: relative; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
         .form-group { margin-bottom: 15px; }
@@ -67,7 +69,7 @@
         .submit-btn:active { transform: scale(0.99); }
         .thankyou-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); z-index: 1000; align-items: center; justify-content: center; }
         .thankyou-box { background: rgba(30, 30, 30, 0.85); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(230, 57, 70, 0.3); width: 280px; height: 280px; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: popupScale 0.3s ease-out forwards; }
-        .check-circle { font-size: 40px; color: #e63946; margin-bottom: 12px; font-weight: bold; }
+        .thankyou-box i { font-size: 45px; color: #e63946; margin-bottom: 15px; }
         .thankyou-box h4 { font-size: 20px; margin-bottom: 10px; color: #ffffff; }
         .thankyou-box p { font-size: 14px; color: #cccccc; margin-bottom: 15px; }
         .close-popup-btn { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; }
@@ -84,8 +86,8 @@
             <a href="#gallery">Gallery</a>
             <a href="#contact">Contact</a>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search website..." onkeyup="searchPage()">
-                <button class="search-btn" onclick="searchPage()">Go</button>
+                <input type="text" placeholder="Search website...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
         </nav>
     </header>
@@ -102,7 +104,7 @@
             <p style="color: #b0b0b0; font-size: 14px; margin-bottom: 15px;">I am actively seeking sponsorships to assist both my standard physical transition setup and my upcoming media content creation kit. Here is what I am focused on procuring:</p>
             <div class="vision-grid">
                 <div class="vision-category">
-                    <h3>Production Gear</h3>
+                    <h3><i class="fas fa-camera"></i> Production Gear</h3>
                     <ul>
                         <li>iPhone (Primary high-res camera unit)</li>
                         <li>Tablet (For mobile content editing & scripts)</li>
@@ -110,7 +112,7 @@
                     </ul>
                 </div>
                 <div class="vision-category">
-                    <h3>Wardrobe & Beauty</h3>
+                    <h3><i class="fas fa-tshirt"></i> Wardrobe & Beauty</h3>
                     <ul>
                         <li>Dresses & Apparel configurations</li>
                         <li>Styling accessories & Jewelry pieces</li>
@@ -118,7 +120,7 @@
                     </ul>
                 </div>
                 <div class="vision-category">
-                    <h3>Identity Aesthetics</h3>
+                    <h3><i class="fas fa-sparkles"></i> Identity Aesthetics</h3>
                     <ul>
                         <li>Silicone props (Premium breast plate setups)</li>
                         <li>Intimate lifestyle production assets (Vibrators, Dildos)</li>
@@ -130,20 +132,17 @@
             <h2>Progress Log</h2>
             <div class="gallery-grid">
                 <div class="gallery-card">
-                    <div class="gallery-placeholder">
-                        <strong style="color:#e63946; font-size:16px; margin-bottom:8px;">Timeline Photo Slot 1</strong>
-                        <span>Replace this box with your uploaded photo link in index.html</span>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000" alt="Timeline Photo" class="gallery-img">
                     <div class="interaction-panel">
                         <div class="action-buttons">
-                            <button class="action-btn" onclick="toggleLike(this)">&#9825; Like</button>
-                            <button class="action-btn" onclick="toggleComments(this)">&#128172; Comment</button>
+                            <button class="action-btn" onclick="toggleLike(this)"><i class="far fa-heart"></i> Like</button>
+                            <button class="action-btn" onclick="toggleComments(this)"><i class="far fa-comment"></i> Comment</button>
                         </div>
                         <div class="share-options">
-                            <span class="share-link snap-color">Snapchat</span>
-                            <span class="share-link insta-color">Instagram</span>
-                            <span class="share-link fb-color">Facebook</span>
-                            <span class="share-link x-color">X</span>
+                            <a href="https://snapchat.com/" target="_blank" class="share-icon"><i class="fab fa-snapchat"></i></a>
+                            <a href="https://instagram.com/" target="_blank" class="share-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="https://facebook.com/" target="_blank" class="share-icon"><i class="fab fa-facebook"></i></a>
+                            <a href="https://x.com/" target="_blank" class="share-icon"><i class="fab fa-x-twitter"></i></a>
                         </div>
                         <div class="comment-section">
                             <div class="comment-list"></div>
@@ -187,7 +186,7 @@
                                 <div class="form-group">
                                     <label>Sponsorship Pledge</label>
                                     <div class="amount-input-container">
-                                        <span class="currency-addon" id="currencySymbol">&#8377;</span>
+                                        <span class="currency-addon" id="currencySymbol">₹</span>
                                         <input type="number" required placeholder="Amount">
                                     </div>
                                 </div>
@@ -215,30 +214,32 @@
                     </div>
                 </div>
                 <div class="info-side">
-                    <div class="snap-title">Snap Connect</div>
-                    <div class="barcode-placeholder" id="snapcodeContainer">
-                        <span style="color:#666; font-size:12px;">Snapcode Image Area</span>
+                    <div class="snap-title"><i class="fab fa-snapchat"></i> Snap Connect</div>
+                    <div class="barcode-container" id="snapcodeContainer">
+                        <img src="snapcode.png" alt="TS Soniya Snapchat QR Code - soniasissy24">
                     </div>
-                    <p style="font-size: 11px; margin-top: 10px; color: #888888; max-width: 180px;">Scan or add my snapcode directly from your phone to connect instantly.</p>
+                    <p style="font-size: 13px; margin-top: 12px; color: #f0f0f0; font-weight: 600;">TS Soniya (@soniasissy24)</p>
+                    <p style="font-size: 11px; margin-top: 4px; color: #888888; max-width: 190px;">Scan or add my snapcode directly from your phone to connect instantly.</p>
                 </div>
             </div>
         </section>
     </div>
     <div class="thankyou-overlay" id="thankyouPopup">
         <div class="thankyou-box">
-            <div class="check-circle">&#10003;</div>
+            <i class="far fa-check-circle"></i>
             <h4>Thank You</h4>
-            <p>Thank you for your interest I will connect with you shortly.</p>
+            <p>I have received your details and interest. I will connect with you shortly.</p>
             <button class="close-popup-btn" onclick="closePopup()">Close</button>
         </div>
     </div>
     <script>
         function toggleLike(btn) {
-            if (btn.innerHTML.includes('&#9825;') || btn.textContent.includes('♡')) {
-                btn.innerHTML = '&#9829; Liked';
+            const icon = btn.querySelector('i');
+            if (icon.classList.contains('far')) {
+                icon.className = 'fas fa-heart';
                 btn.style.color = '#e63946';
             } else {
-                btn.innerHTML = '&#9825; Like';
+                icon.className = 'far fa-heart';
                 btn.style.color = '#aaaaaa';
             }
         }
@@ -259,10 +260,10 @@
         function updateCurrency() {
             const country = document.getElementById('countrySelect').value;
             const symbolElement = document.getElementById('currencySymbol');
-            if (country === 'IN') symbolElement.innerHTML = '&#8377;';
+            if (country === 'IN') symbolElement.textContent = '₹';
             else if (country === 'US') symbolElement.textContent = '$';
-            else if (country === 'UK') symbolElement.innerHTML = '&pound;';
-            else if (country === 'EU') symbolElement.innerHTML = '&euro;';
+            else if (country === 'UK') symbolElement.textContent = '£';
+            else if (country === 'EU') symbolElement.textContent = '€';
             else symbolElement.textContent = '$';
         }
         function handleFormSubmit(event) {
@@ -273,17 +274,6 @@
         }
         function closePopup() {
             document.getElementById('thankyouPopup').style.display = 'none';
-        }
-        function searchPage() {
-            const term = document.getElementById('searchInput').value.toLowerCase();
-            const sections = document.querySelectorAll('section');
-            sections.forEach(sec => {
-                if (sec.textContent.toLowerCase().includes(term)) {
-                    sec.style.display = 'block';
-                } else {
-                    sec.style.display = 'none';
-                }
-            });
         }
     </script>
 </body>
